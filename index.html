@@ -1,1 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Applied Business Case Studies — Delwin Manjali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0C10;
+    --panel: #12151B;
+    --border: #232830;
+    --text: #E7E9EE;
+    --text-dim: #8992A3;
+    --accent: #4FD8C4;
+  }
 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  a { color: inherit; text-decoration: none; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  header {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 90px 32px 56px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--accent); }
+    50% { opacity: 0.5; box-shadow: 0 0 14px var(--accent); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .case {
+    animation: fadeInUp 0.6s ease both;
+  }
+
+  .case:nth-child(1) { animation-delay: 0.1s; }
+  .case:nth-child(2) { animation-delay: 0.22s; }
+  .case:nth-child(3) { animation-delay: 0.34s; }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: clamp(30px, 4.5vw, 44px);
+    letter-spacing: -0.02em;
+    max-width: 720px;
+    line-height: 1.1;
+  }
+
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 32px 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .case {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    display: block;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .case:hover {
+    border-color: #34404a;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  }
+
+  .thumb-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--border);
+    transition: transform 0.4s ease;
+  }
+
+  .case:hover .thumb {
+    transform: scale(1.06);
+  }
+
+  .view-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 12, 16, 0.55);
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .case:hover .view-overlay {
+    opacity: 1;
+  }
+
+  .case-info {
+    padding: 20px 22px 24px;
+  }
+
+  .case-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .case-desc {
+    font-size: 13.5px;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    border: 1px solid #234943;
+    padding: 4px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 32px 70px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 800px) {
+    main { grid-template-columns: 1fr; }
+    header { padding: 64px 20px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Applied Business Analysis — BUS 100</div>
+  <h1>Applied Business Case Studies</h1>
+</header>
+
+<main>
+
+  <a class="case" href="https://docs.google.com/presentation/d/1EpYePJT-Ne-JCedMT4wo3jOttSbVW3GdzV95ssCsvgw/edit?usp=sharing" target="_blank" rel="noopener">
+    <div class="thumb-wrap">
+      <img class="thumb" src="images/pulse.png" alt="Pulse Fitness case study thumbnail">
+      <div class="view-overlay">View Slides →</div>
+    </div>
+    <div class="case-info">
+      <div class="case-title">Pulse Fitness</div>
+      <div class="case-desc">Modeled cost, margin, and customer lifetime value across segments to recommend which market to prioritize.</div>
+      <div class="tags">
+        <span class="tag">Unit Economics</span>
+        <span class="tag">CLV Modeling</span>
+        <span class="tag">Segmentation</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="case" href="https://docs.google.com/presentation/d/1kL-ahi9Oq61ykUQ7zGdHmQNfof31SPLzP_8S1Y2Q2BQ/edit?usp=drive_link" target="_blank" rel="noopener">
+    <div class="thumb-wrap">
+      <img class="thumb" src="images/rajratan.png" alt="Rajratan case study thumbnail">
+      <div class="view-overlay">View Slides →</div>
+    </div>
+    <div class="case-info">
+      <div class="case-title">Rajratan</div>
+      <div class="case-desc">Compared two manufacturing expansion sites on cost, risk, and market fit to recommend a new plant location.</div>
+      <div class="tags">
+        <span class="tag">Market Strategy</span>
+        <span class="tag">Risk Analysis</span>
+        <span class="tag">Recommendation</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="case" href="https://docs.google.com/presentation/d/162ENMiXAUabjPfUvnYsggaUwkPcVY1pzAlSBJftFgHA/edit?usp=drive_link" target="_blank" rel="noopener">
+    <div class="thumb-wrap">
+      <img class="thumb" src="images/wk6.png" alt="Wk 6 Business Case thumbnail">
+      <div class="view-overlay">View Slides →</div>
+    </div>
+    <div class="case-info">
+      <div class="case-title">Workplace Policy Case</div>
+      <div class="case-desc">Weighed policy consistency against employee context to resolve an HR judgment call with a formal written decision.</div>
+      <div class="tags">
+        <span class="tag">HR Policy</span>
+        <span class="tag">Ethical Decision-Making</span>
+        <span class="tag">Written Decision</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="case" href="https://docs.google.com/presentation/d/175xq04PSyeFLzIkzuJEMPyB_6herX-_61At0dvA4Szs/edit?usp=drive_link" target="_blank" rel="noopener">
+    <div class="thumb-wrap">
+      <img class="thumb" src="images/golden.png" alt="Golden Careers case study thumbnail">
+      <div class="view-overlay">View Slides →</div>
+    </div>
+    <div class="case-info">
+      <div class="case-title">Golden Careers</div>
+      <div class="case-desc">Diagnosed a workplace morale and turnover problem and built a data-backed recognition program to address it.</div>
+      <div class="tags">
+        <span class="tag">Organizational Strategy</span>
+        <span class="tag">Research-Backed</span>
+        <span class="tag">Culture &amp; Retention</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="case" href="https://docs.google.com/spreadsheets/d/1xt1c72DxxVqUEc2WbTu71kycknKAt1cpTNCROrTxhjI/edit?usp=drive_link" target="_blank" rel="noopener">
+    <div class="thumb-wrap">
+      <img class="thumb" src="images/forest.png" alt="Forest City Tennis Club case study thumbnail">
+      <div class="view-overlay">View Sheet →</div>
+    </div>
+    <div class="case-info">
+      <div class="case-title">Forest City Tennis Club</div>
+      <div class="case-desc">Prepared a full general ledger, income statement, and classified balance sheet for a multi-segment business with inventory, COGS, and depreciation.</div>
+      <div class="tags">
+        <span class="tag">Financial Statements</span>
+        <span class="tag">Full Ledger Cycle</span>
+        <span class="tag">Accounting</span>
+      </div>
+    </div>
+  </a>
+
+</main>
+
+<footer>Delwin Manjali · BUS 100</footer>
+
+</body>
+</html>
